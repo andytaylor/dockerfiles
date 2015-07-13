@@ -23,7 +23,7 @@ ARTEMIS_HOME='/opt/apache-artemis-1.0.1-SNAPSHOT'
 
 
 # Java Opts
-JAVA_ARGS="-XX:+UseParallelGC -XX:+AggressiveOpts -XX:+UseFastAccessorMethods -Xms512M -Xmx1024M -DHOST_IP_ADDRESS=$HOST_IP_ADDRESS -DROUTER_PORT_5672_TCP_ADDR=$ROUTER_PORT_5672_TCP_ADDR"
+JAVA_ARGS="-XX:+UseParallelGC -XX:+AggressiveOpts -XX:+UseFastAccessorMethods -Xms512M -Xmx1024M -DHOST_IP_ADDRESS=$HOST_IP_ADDRESS -DROUTER_PORT_5672_TCP_ADDR=$ROUTER_PORT_5672_TCP_ADDR -DQOS=$QOS"
 
 
 # Debug args: Uncomment to enable debug

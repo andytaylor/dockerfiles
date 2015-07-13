@@ -43,17 +43,16 @@ under the License.
 
       <journal-min-files>10</journal-min-files>
 
+      <management-address>broker.${QOS}</management-address>
+
       <acceptors>
          <!-- AMQP Acceptor.  Listens on default AMQP port for AMQP traffic.-->
          <acceptor name="amqp">tcp://0.0.0.0:5672?protocols=AMQP</acceptor>
       </acceptors>
 
       <queues>
-         <queue name="brokerA.testQueue">
-            <address>brokerA.testQueue</address>
-         </queue>
-         <queue name="brokerB.testQueue">
-            <address>brokerB.testQueue</address>
+         <queue name="broker.${QOS}.reply">
+            <address>broker.${QOS}.reply</address>
          </queue>
       </queues>
 
@@ -83,9 +82,9 @@ under the License.
       <connector-services>
          <connector-service name="dispatch">
             <factory-class>org.apache.activemq.artemis.integration.dispatch.DispatchConnectorServiceFactory</factory-class>
-	    <param key="url" value="${ROUTER_PORT_5672_TCP_ADDR}:5672"/>
-            <param key="prefix" value="brokerA."/>
-            <param key="connector" value="brokerAconnector"/>
+	        <param key="url" value="${ROUTER_PORT_5672_TCP_ADDR}:5672"/>
+            <param key="qos" value="${QOS}"/>
+            <param key="prefix" value="broker."/>
             <param key="connector-address" value="${HOST_IP_ADDRESS}"/>
             <param key="connector-port" value="5672"/>
          </connector-service>

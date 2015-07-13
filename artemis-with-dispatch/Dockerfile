@@ -45,5 +45,6 @@ RUN $ARTEMIS_HOME/bin/artemis create /etc/artemis/profiles/dispatch --user admin
 ADD dispatch-broker.xml /etc/artemis/profiles/dispatch/etc/broker.xml
 ADD artemis.profile /etc/artemis/profiles/dispatch/etc/artemis.profile
 ADD runbroker.sh /usr/bin/
+ADD rundispatch.sh /usr/bin/
 EXPOSE 8161 61616 5445 5672 61613
 CMD bash

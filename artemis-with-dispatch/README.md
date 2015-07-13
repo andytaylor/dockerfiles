@@ -12,12 +12,12 @@ network interface that is used and will bridge the connction to the docker host 
 to set the ip to this, alternatively configure private-router.conf before building your image. You will need to run 
 Dispatch on the host machine and bind to the same address.
 
-6. you can then create a container running dispatch via 'docker run -t -i  -name dispatch  artemis-dispatch /bin/bash' and run 
-'qdrouterd -c /etc/qpid-dispatch/private-router.conf' or just run 'docker run -t -i  -name dispatch_container  dispatch qdrouterd -c /etc/qpid-dispatch/private-router.conf'
+6. you can then create a container running dispatch via 'docker run -t -i  -name dispatch_container artemis-dispatch /bin/bash' and run 
+'qdrouterd -c /etc/qpid-dispatch/private-router.conf' or just run 'docker run -t -i  -name dispatch_container artemis-dispatch qdrouterd -c /etc/qpid-dispatch/private-router.conf'
 to start the router directly.
 
 every step from here is dependant on using my branch https://github.com/andytaylor/activemq-artemis/tree/dispatch_proto
  
-5 then you can start an artemis container by running 'docker run -t -i  -name brokerB --link dispatch:router artemis-dispatch  run_broker.sh'
+5 then you can start an artemis container by running 'docker run -t -i -e "QOS=qos2"  -name artemis_container --link dispatch_container:router artemis-dispatch runbroker.sh'
 
 The last stage will start Artemis which will register itself with Dispatch.
