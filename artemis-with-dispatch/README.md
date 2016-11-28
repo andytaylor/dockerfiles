@@ -13,7 +13,7 @@ to set the ip to this, alternatively configure private-router.conf before buildi
 Dispatch on the host machine and bind to the same address.
 
 6. you can then create a container running dispatch via 'docker run -t -i  -name dispatch_container artemis-dispatch /bin/bash' and run 
-'qdrouterd -c /etc/qpid-dispatch/private-router.conf' or just run 'docker run -t -i  -name dispatch_container artemis-dispatch qdrouterd -c /etc/qpid-dispatch/private-router.conf'
+'qdrouterd -c /etc/qpid-dispatch/private-router.conf' or just run 'docker run -t -i  -name dispatch_container artemis-dispatch rundispatch.sh'
 to start the router directly.
 
 every step from here is dependant on using my branch https://github.com/andytaylor/activemq-artemis/tree/dispatch_proto

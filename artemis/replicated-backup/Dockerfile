@@ -17,15 +17,12 @@
 ## under the License.
 ##
 
-FROM fedora:24
+FROM amq7
 MAINTAINER Andy Taylor
-RUN yum -y update
-RUN yum -y install wget
-RUN yum -y install tar
-RUN yum -y install libaio
-RUN yum -y install java-1.8.0-openjdk.x86_64
-RUN yum -y install java-1.8.0-openjdk-devel.x86_64
-ADD A-MQ7-7.0.0-SNAPSHOT-bin.tar.gz /opt/
-ENV ARTEMIS_HOME /opt/A-MQ7-7.0.0-SNAPSHOT
 RUN mkdir -p /etc/artemis/profiles
-
+RUN $ARTEMIS_HOME/bin/artemis create --replicated --failover-on-shutdown  --user admin --password password --role admin --allow-anonymous y --clustered --host localhost --cluster-user clusterUser --cluster-password clusterPassword /etc/artemis/profiles/repBackupBroker
+ADD broker.xml /etc/artemis/profiles/repBackupBroker/etc/broker.xml
+ADD runbroker.sh runbroker.sh
+ADD stopports.sh stopports.sh
+EXPOSE 8161 61616 5445 5672 61613 5005
+CMD bash

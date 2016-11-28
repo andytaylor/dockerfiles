@@ -1,0 +1,1 @@
+iptables -A INPUT -p tcp --dport 61616 -j DROP;iptables -A OUTPUT -p tcp --dport 61616 -j DROP
