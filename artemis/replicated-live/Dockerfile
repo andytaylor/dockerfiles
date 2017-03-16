@@ -25,6 +25,7 @@ ADD broker.xml /etc/artemis/profiles/repLiveBroker/etc/broker.xml
 RUN $ARTEMIS_HOME/bin/artemis create --replicated --failover-on-shutdown  --user admin --password password --role admin --allow-anonymous y --clustered --host localhost --cluster-user clusterUser --cluster-password clusterPassword /etc/artemis/profiles/repLiveBroker2
 ADD broker2.xml /etc/artemis/profiles/repLiveBroker2/etc/broker.xml
 ADD runbroker.sh runbroker.sh
+ADD runbroker2.sh runbroker2.sh
 ADD stopports.sh stopports.sh
 EXPOSE 8161 61616 5445 5672 61613 5005
 CMD bash
